@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital Cooking Factory</title>
+<meta name="description" content="Digital Cooking Factory cuisine vos projets digitaux sur mesure : e-commerce, développement web et mobile, accompagnement IA et web analyse.">
+<meta property="og:title" content="Digital Cooking Factory">
+<meta property="og:description" content="E-commerce, développement web et mobile, accompagnement IA et web analyse. Des projets digitaux cuisinés sur mesure.">
+<meta name="theme-color" content="#0F3B2E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 4c14 0 26 9 27 24 1 13-8 18-12 25-4 7-14 9-22 6C14 56 5 47 5 34 5 17 18 4 32 4z' fill='%23FFFBEA'/%3E%3Ccircle cx='33' cy='33' r='14' fill='%23FFC81E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Instrument+Sans:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --yolk:#FFC81E;
+  --yolk-deep:#FFA400;
+  --butter:#FFF1B8;
+  --cream:#FFFBEA;
+  --plum:#0F3B2E;
+  --plum-soft:#1E5A47;
+  --tomato:#FF5A36;
+  --ink:#0F3B2E;
+  --muted:#4E6F62;
+  --display:"Unbounded", system-ui, sans-serif;
+  --body:"Instrument Sans", system-ui, sans-serif;
+  --ticket:"Courier Prime", ui-monospace, monospace;
+  --gutter:clamp(16px, 4vw, 56px);
+  --max:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;overflow-x:clip}
+img,svg{display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--tomato);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Header ---------- */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s, box-shadow .3s}
+.top.scrolled{background:rgba(15,59,46,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(255,200,30,.25)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--cream);font-family:var(--display);font-weight:800;font-size:.95rem;line-height:1.05;letter-spacing:-.01em}
+.logo svg{width:38px;height:38px;flex:none}
+.nav{display:flex;align-items:center;gap:30px}
+.nav a{color:var(--cream);text-decoration:none;font-weight:500;font-size:.98rem;opacity:.85}
+.nav a:hover{opacity:1;text-decoration:underline;text-decoration-color:var(--yolk);text-underline-offset:6px;text-decoration-thickness:2px}
+.btn{display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;font:600 1rem var(--body);text-decoration:none;border-radius:999px;padding:14px 26px;background:var(--yolk);color:var(--plum);transition:transform .15s, background .15s}
+.btn:hover{background:var(--yolk-deep);transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.97)}
+.btn.ghost{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 2px rgba(255,251,234,.5)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 2px var(--yolk);color:var(--yolk);background:transparent}
+.nav .btn{padding:11px 20px;opacity:1;white-space:nowrap}
+@media (max-width:420px){.nav .btn{padding:10px 14px;font-size:.9rem}.logo{font-size:.82rem}}
+.nav .btn:hover{text-decoration:none}
+@media (max-width:820px){.nav a:not(.btn){display:none}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;background:var(--plum);color:var(--cream);min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:120px 0 80px}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,200,30,.13) 1.5px, transparent 1.6px);background-size:28px 28px;mask-image:linear-gradient(110deg,#000 20%,transparent 75%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px;width:100%}
+.hero h1{font-family:var(--display);font-weight:900;font-size:clamp(2.6rem,6.4vw,5.6rem);line-height:.98;letter-spacing:-.035em;text-wrap:balance}
+.hero h1 .stack{display:block}
+.hero h1 .outline{color:transparent;-webkit-text-stroke:2px var(--yolk)}
+.hero p.lead{margin-top:28px;max-width:33em;font-size:clamp(1.05rem,1.4vw,1.22rem);color:rgba(255,251,234,.82)}
+.hero .ctas{margin-top:38px;display:flex;flex-wrap:wrap;gap:14px}
+.egg-zone{position:relative;aspect-ratio:1;width:100%;max-width:620px;justify-self:center;touch-action:manipulation}
+#egg{width:100%;height:100%;overflow:visible;cursor:pointer}
+#egg .white{fill:var(--cream)}
+#egg .yolk{fill:var(--yolk)}
+#egg .yolk-shade{fill:var(--yolk-deep);opacity:.55}
+#egg .shine{fill:#fff;opacity:.75}
+.egg-hint{position:absolute;left:50%;bottom:2%;transform:translateX(-50%);font-size:.88rem;color:rgba(255,251,234,.6);white-space:nowrap;pointer-events:none;transition:opacity .4s}
+.badge{position:absolute;right:-2%;top:2%;width:clamp(96px,11vw,140px);aspect-ratio:1;animation:spin 18s linear infinite;pointer-events:none}
+.badge text{font:600 11.5px var(--display);letter-spacing:.14em;fill:var(--yolk)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:900px){
+  .hero{padding-top:100px}
+  .hero .wrap{grid-template-columns:1fr;gap:8px}
+  .egg-zone{order:-1;max-width:360px;margin-bottom:-10px}
+  .badge{right:0;top:0}
+}
+
+/* ---------- Marquee ---------- */
+.ticker{background:var(--yolk);color:var(--plum);overflow:hidden;border-block:3px solid var(--plum);transform:rotate(-1.6deg);margin:-26px -20px 0;position:relative;z-index:2}
+.ticker-track{display:flex;width:max-content;animation:slide 32s linear infinite}
+.ticker span{font-family:var(--display);font-weight:800;font-size:clamp(1.1rem,2.3vw,1.7rem);padding:16px 0;white-space:nowrap;letter-spacing:-.01em}
+.ticker span::after{content:"✺";margin:0 28px;color:var(--tomato)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- Section heads ---------- */
+section.block{padding:clamp(90px,12vw,150px) 0}
+.head{display:flex;flex-wrap:wrap;align-items:flex-end;gap:20px 48px;margin-bottom:56px}
+.head h2{font-family:var(--display);font-weight:900;font-size:clamp(2.6rem,7vw,6rem);line-height:.9;letter-spacing:-.04em}
+.head p{flex:1 1 20em;max-width:34em;color:var(--muted);font-size:1.1rem;padding-bottom:8px}
+
+/* ---------- La carte (menu) ---------- */
+#carte{background:var(--cream)}
+.menu{border-top:3px solid var(--plum)}
+.dish{border-bottom:1.5px dashed rgba(15,59,46,.35)}
+.dish summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,auto) 1fr auto 44px;align-items:baseline;gap:18px;padding:30px 0}
+.dish summary::-webkit-details-marker{display:none}
+.dish h3{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3.6vw,2.8rem);letter-spacing:-.03em;line-height:1.05;transition:color .2s}
+.dish .leader{border-bottom:3px dotted var(--plum);opacity:.35;transform:translateY(-6px);min-width:24px}
+.dish .tag{font-style:italic;color:var(--muted);font-size:1rem;white-space:nowrap}
+.dish .plus{width:44px;height:44px;border-radius:50%;background:var(--plum);color:var(--yolk);display:grid;place-items:center;align-self:center;transition:transform .35s cubic-bezier(.5,1.8,.5,1), background .2s}
+.dish .plus svg{width:18px;height:18px}
+.dish summary:hover h3{color:var(--plum-soft)}
+.dish summary:hover .plus{background:var(--yolk);color:var(--plum)}
+.dish[open] .plus{transform:rotate(135deg);background:var(--yolk);color:var(--plum)}
+.dish .body{display:grid;grid-template-columns:1.3fr 1fr;gap:20px 56px;padding:0 0 40px;animation:pour .45s ease-out}
+.dish .body p{font-size:1.12rem;max-width:36em}
+.ingredients h4{font:600 .95rem var(--body);color:var(--muted);margin-bottom:12px}
+.ingredients ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.ingredients li{background:var(--butter);border-radius:999px;padding:6px 14px;font-size:.95rem;font-weight:500}
+@keyframes pour{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@media (max-width:760px){
+  .dish summary{grid-template-columns:1fr 44px;gap:6px 14px}
+  .dish .leader{display:none}
+  .dish .tag{grid-row:2;grid-column:1}
+  .dish .plus{grid-row:1/3;grid-column:2}
+  .dish .body{grid-template-columns:1fr}
+}
+
+/* ---------- La recette (process) ---------- */
+#recette{background:var(--yolk);position:relative;overflow:hidden}
+#recette .head p{color:var(--plum);opacity:.8}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative;counter-reset:s}
+.steps::before{content:"";position:absolute;left:0;right:0;top:34px;height:3px;background:var(--plum);border-radius:3px}
+.step{position:relative;counter-increment:s}
+.step .num{width:70px;height:70px;border-radius:50%;background:var(--plum);color:var(--yolk);display:grid;place-items:center;font:900 1.6rem var(--display);position:relative;box-shadow:0 0 0 8px var(--yolk)}
+.step .num::before{content:counter(s)}
+.step h3{font:800 1.55rem var(--display);letter-spacing:-.02em;margin:26px 0 8px}
+.step p{max-width:22em}
+.drip{position:absolute;right:-60px;bottom:-80px;width:340px;opacity:.18;pointer-events:none}
+@media (max-width:900px){
+  .steps{grid-template-columns:1fr;gap:36px;padding-left:4px}
+  .steps::before{top:0;bottom:0;left:34px;right:auto;width:3px;height:auto}
+  .step{display:grid;grid-template-columns:70px 1fr;column-gap:24px}
+  .step .num{grid-row:1/3}
+  .step h3{margin:12px 0 4px}
+}
+
+/* ---------- Commande ---------- */
+#commande{background:var(--plum);color:var(--cream)}
+#commande .head p{color:rgba(255,251,234,.75)}
+#commande .head h2{color:var(--yolk)}
+.order{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,6vw,80px);align-items:start}
+fieldset{border:0}
+legend,.field label{display:block;font-weight:600;margin-bottom:12px;font-size:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;box-shadow:inset 0 0 0 2px rgba(255,251,234,.35);cursor:pointer;font-weight:500;transition:background .15s, color .15s, box-shadow .15s, transform .15s;user-select:none}
+.chip span::before{content:"";width:10px;height:10px;border-radius:50%;box-shadow:inset 0 0 0 2px currentColor;transition:background .15s}
+.chip input:checked + span{background:var(--yolk);color:var(--plum);box-shadow:none}
+.chip input:checked + span::before{background:var(--plum);box-shadow:none}
+.chip input:focus-visible + span{outline:3px solid var(--tomato);outline-offset:3px}
+.chip span:hover{transform:translateY(-2px)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{margin-bottom:22px}
+.field input,.field textarea{width:100%;font:inherit;color:var(--cream);background:rgba(255,251,234,.06);border:0;border-bottom:2px solid rgba(255,251,234,.35);padding:12px 4px;border-radius:6px 6px 0 0;transition:border-color .2s, background .2s}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--yolk);background:rgba(255,251,234,.1)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,251,234,.4)}
+.alt{margin-top:18px;font-size:.95rem;color:rgba(255,251,234,.7)}
+.alt a{color:var(--yolk)}
+@media (max-width:860px){.order{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+
+/* Ticket */
+.ticket-wrap{position:sticky;top:110px}
+.ticket{background:#fffdf3;color:#2a2a2a;font-family:var(--ticket);padding:30px 26px 34px;transform:rotate(2deg);box-shadow:0 30px 60px -20px rgba(0,0,0,.55);position:relative;
+  --zig:radial-gradient(circle at 10px 0,transparent 9px,#fffdf3 9.5px);
+}
+.ticket::after{content:"";position:absolute;left:0;right:0;bottom:-12px;height:12px;background:radial-gradient(circle at 8px 12px,transparent 8px,#fffdf3 8.5px) 0 0/16px 12px repeat-x}
+.ticket::before{content:"";position:absolute;left:50%;top:-14px;width:84px;height:28px;background:rgba(255,200,30,.85);transform:translateX(-50%) rotate(-3deg)}
+.ticket h3{font:700 1.05rem var(--ticket);text-align:center;letter-spacing:.06em}
+.ticket .meta{display:flex;justify-content:space-between;font-size:.85rem;margin:10px 0 14px;color:#666}
+.ticket hr{border:0;border-top:2px dashed #bbb;margin:14px 0}
+.ticket ul{list-style:none;min-height:110px}
+.ticket li{display:flex;justify-content:space-between;gap:12px;padding:4px 0;animation:print .35s ease-out}
+.ticket li.empty{color:#999;font-style:italic;animation:none}
+.ticket .note{font-size:.88rem;color:#555;white-space:pre-wrap;word-break:break-word;max-height:7.5em;overflow:hidden}
+.ticket .total{display:flex;justify-content:space-between;font-weight:700;font-size:1.05rem}
+.ticket .thanks{text-align:center;margin-top:16px;font-size:.88rem}
+@keyframes print{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (max-width:860px){.ticket-wrap{position:static}.ticket{transform:rotate(1deg)}}
+
+/* ---------- Footer ---------- */
+footer{background:var(--plum);color:rgba(255,251,234,.75);padding:20px 0 40px;overflow:hidden}
+.wordmark{font-family:var(--display);font-weight:900;font-size:clamp(2.8rem,10.4vw,9.4rem);line-height:.85;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:2px var(--yolk);margin:20px 0 40px;white-space:nowrap}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;font-size:.95rem;border-top:1px solid rgba(255,251,234,.2);padding-top:24px}
+.foot a{color:var(--cream)}
+.legal summary{cursor:pointer;color:var(--cream);text-decoration:underline;text-underline-offset:4px}
+.legal .legal-body{margin-top:16px;max-width:52em;font-size:.92rem;line-height:1.7}
+.legal .legal-body p+p{margin-top:8px}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="#accueil" aria-label="Digital Cooking Factory, accueil">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4c14 0 26 9 27 24 1 13-8 18-12 25-4 7-14 9-22 6C14 56 5 47 5 34 5 17 18 4 32 4z" fill="#FFFBEA"/><circle cx="33" cy="33" r="14" fill="#FFC81E"/></svg>
+      <span>Digital<br>Cooking Factory</span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#carte">La carte</a>
+      <a href="#recette">La recette</a>
+      <a class="btn" href="#commande">Passer commande</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="accueil">
+    <div class="wrap">
+      <div class="hero-text">
+        <h1>
+          <span class="stack">Vos projets</span>
+          <span class="stack">digitaux,</span>
+          <span class="stack outline">faits maison.</span>
+        </h1>
+        <p class="lead">Digital Cooking Factory conçoit des boutiques en ligne, des sites et des applications mobiles, et accompagne les entreprises dans l'usage de l'IA et l'analyse de leurs données web.</p>
+        <div class="ctas">
+          <a class="btn" href="#commande">Parler de mon projet</a>
+          <a class="btn ghost" href="#carte">Voir la carte</a>
+        </div>
+      </div>
+
+      <div class="egg-zone">
+        <svg id="egg" viewBox="0 0 600 600" role="img" aria-label="Un œuf au plat jaune vif, qui réagit quand on le touche">
+          <path class="white" id="eggWhite"/>
+          <path class="yolk-shade" id="yolkShade"/>
+          <path class="yolk" id="yolk"/>
+          <ellipse class="shine" id="shine" rx="24" ry="13"/>
+        </svg>
+        <svg class="badge" viewBox="0 0 120 120" aria-hidden="true">
+          <defs><path id="circ" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+          <text><textPath href="#circ">✺ Fait maison en France ✺ Sur mesure </textPath></text>
+        </svg>
+        <span class="egg-hint" id="hint">Touchez le jaune</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Boutiques en ligne</span><span>Sites web rapides</span><span>Apps iOS &amp; Android</span><span>IA dans vos outils</span><span>Tableaux de bord</span><span>Tracking propre</span>
+      <span>Boutiques en ligne</span><span>Sites web rapides</span><span>Apps iOS &amp; Android</span><span>IA dans vos outils</span><span>Tableaux de bord</span><span>Tracking propre</span>
+    </div>
+  </div>
+
+  <section class="block" id="carte">
+    <div class="wrap">
+      <div class="head">
+        <h2>La carte</h2>
+        <p>Quatre spécialités, préparées avec les mêmes ingrédients&nbsp;: du code propre, des choix expliqués simplement et des résultats que l'on mesure.</p>
+      </div>
+
+      <div class="menu">
+        <details class="dish" open>
+          <summary>
+            <h3>E-commerce</h3><span class="leader" aria-hidden="true"></span><span class="tag">Le plat signature</span>
+            <span class="plus" aria-hidden="true"><svg viewBox="0 0 18 18"><path d="M9 1v16M1 9h16" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+          </summary>
+          <div class="body">
+            <p>Création ou refonte de votre boutique en ligne&nbsp;: un catalogue clair, un tunnel d'achat sans friction, un paiement fiable et des pages qui se chargent vite, sur mobile comme sur ordinateur.</p>
+            <div class="ingredients"><h4>Ingrédients</h4><ul><li>Shopify, WooCommerce ou sur mesure</li><li>Paiement en ligne</li><li>SEO produits</li><li>Connexion logistique</li><li>Performance</li></ul></div>
+          </div>
+        </details>
+
+        <details class="dish">
+          <summary>
+            <h3>Développement web</h3><span class="leader" aria-hidden="true"></span><span class="tag">Le grand classique</span>
+            <span class="plus" aria-hidden="true"><svg viewBox="0 0 18 18"><path d="M9 1v16M1 9h16" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+          </summary>
+          <div class="body">
+            <p>Sites vitrines, applications web métier, back-offices et API. Du code pensé pour durer, facile à faire évoluer, et une interface que vos clients comprennent du premier coup.</p>
+            <div class="ingredients"><h4>Ingrédients</h4><ul><li>Sites vitrines</li><li>Applications web</li><li>Back-offices</li><li>API et intégrations</li><li>Accessibilité</li></ul></div>
+          </div>
+        </details>
+
+        <details class="dish">
+          <summary>
+            <h3>Applications mobiles</h3><span class="leader" aria-hidden="true"></span><span class="tag">À emporter</span>
+            <span class="plus" aria-hidden="true"><svg viewBox="0 0 18 18"><path d="M9 1v16M1 9h16" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+          </summary>
+          <div class="body">
+            <p>Des applications iOS et Android agréables à utiliser, de la maquette jusqu'à la publication sur l'App Store et Google Play, puis les mises à jour dans la durée.</p>
+            <div class="ingredients"><h4>Ingrédients</h4><ul><li>iOS et Android</li><li>Natif ou multiplateforme</li><li>Notifications</li><li>Publication sur les stores</li><li>Maintenance</li></ul></div>
+          </div>
+        </details>
+
+        <details class="dish">
+          <summary>
+            <h3>IA &amp; web analyse</h3><span class="leader" aria-hidden="true"></span><span class="tag">Le conseil du chef</span>
+            <span class="plus" aria-hidden="true"><svg viewBox="0 0 18 18"><path d="M9 1v16M1 9h16" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+          </summary>
+          <div class="body">
+            <p>Un accompagnement pour tirer parti de l'IA dans votre activité et comprendre enfin ce que disent vos données&nbsp;: audit, mise en place du suivi, tableaux de bord lisibles et formation de vos équipes.</p>
+            <div class="ingredients"><h4>Ingrédients</h4><ul><li>Audit et cas d'usage IA</li><li>Assistants et automatisations</li><li>Plan de marquage</li><li>Tableaux de bord</li><li>Respect du RGPD</li><li>Formation</li></ul></div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="recette">
+    <svg class="drip" viewBox="0 0 200 200" aria-hidden="true"><path fill="#0F3B2E" d="M100 10c40 0 80 30 80 75 0 30-20 40-24 60-3 18 8 40-10 46-14 5-20-12-22-30-2-16-14-14-16 2-2 20-6 40-22 36-14-4-8-24-14-38-8-18-42-28-42-62 0-50 35-89 70-89z"/></svg>
+    <div class="wrap">
+      <div class="head">
+        <h2>La recette</h2>
+        <p>Chaque projet suit les mêmes étapes, pour que vous sachiez toujours où en est la cuisson.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><span class="num" aria-hidden="true"></span><h3>Goûter</h3><p>Un premier échange pour comprendre votre activité, vos objectifs et vos contraintes.</p></li>
+        <li class="step"><span class="num" aria-hidden="true"></span><h3>Préparer</h3><p>Maquettes, choix techniques et devis clair, avant la moindre ligne de code.</p></li>
+        <li class="step"><span class="num" aria-hidden="true"></span><h3>Cuisiner</h3><p>Développement par étapes, avec une version à tester régulièrement.</p></li>
+        <li class="step"><span class="num" aria-hidden="true"></span><h3>Servir</h3><p>Mise en ligne, mesure des résultats et suivi dans la durée.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="commande">
+    <div class="wrap">
+      <div class="head">
+        <h2>Passer commande</h2>
+        <p>Composez votre projet, le bon de commande se remplit tout seul. L'envoi ouvre votre messagerie avec tout prérempli.</p>
+      </div>
+
+      <div class="order">
+        <form id="orderForm" novalidate>
+          <fieldset>
+            <legend>Ce qui vous intéresse</legend>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="svc" value="E-commerce"><span>E-commerce</span></label>
+              <label class="chip"><input type="checkbox" name="svc" value="Site web"><span>Site web</span></label>
+              <label class="chip"><input type="checkbox" name="svc" value="Application web"><span>Application web</span></label>
+              <label class="chip"><input type="checkbox" name="svc" value="Application mobile"><span>Application mobile</span></label>
+              <label class="chip"><input type="checkbox" name="svc" value="Accompagnement IA"><span>Accompagnement IA</span></label>
+              <label class="chip"><input type="checkbox" name="svc" value="Web analyse"><span>Web analyse</span></label>
+            </div>
+          </fieldset>
+          <div class="row">
+            <div class="field"><label for="name">Votre nom</label><input id="name" name="name" autocomplete="name" placeholder="Camille Martin"></div>
+            <div class="field"><label for="company">Entreprise</label><input id="company" name="company" autocomplete="organization" placeholder="Nom de votre entreprise"></div>
+          </div>
+          <div class="field"><label for="msg">Votre projet en quelques mots</label><textarea id="msg" name="msg" placeholder="Ce que vous voulez construire, pour quand, et ce qui compte le plus pour vous."></textarea></div>
+          <button class="btn" type="submit">Envoyer la commande</button>
+          <p class="alt">Ou écrivez directement à <a href="mailto:contact@digital-cooking-factory.com">contact@digital-cooking-factory.com</a></p>
+        </form>
+
+        <div class="ticket-wrap" aria-live="polite">
+          <div class="ticket">
+            <h3>BON DE COMMANDE</h3>
+            <div class="meta"><span id="tNum">N° 0001</span><span id="tDate"></span></div>
+            <div id="tClient">Table : à compléter</div>
+            <hr>
+            <ul id="tItems"><li class="empty">Choisissez sur la carte</li></ul>
+            <hr>
+            <div class="note" id="tNote"></div>
+            <div class="total"><span>TOTAL</span><span id="tTotal">0 plat</span></div>
+            <p class="thanks">Merci, on s'occupe du reste.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="wordmark" aria-hidden="true">Cooking Factory</div>
+    <div class="foot">
+      <span>© <span id="year">2026</span> Digital Cooking Factory SASU</span>
+      <a href="mailto:contact@digital-cooking-factory.com">contact@digital-cooking-factory.com</a>
+      <details class="legal">
+        <summary>Mentions légales</summary>
+        <div class="legal-body">
+          <p><strong>Éditeur :</strong> Digital Cooking Factory, SASU au capital de [montant] €, immatriculée au RCS de [ville] sous le numéro [SIREN], siège social [adresse].</p>
+          <p><strong>Directeur de la publication :</strong> [Prénom Nom], président.</p>
+          <p><strong>Contact :</strong> contact@digital-cooking-factory.com</p>
+          <p><strong>Hébergement :</strong> GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
+          <p>Ce site ne dépose aucun cookie et ne collecte aucune donnée personnelle.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Header on scroll ---------- */
+  const top = document.getElementById('top');
+  const onScroll = () => top.classList.toggle('scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Living egg ---------- */
+  const $ = id => document.getElementById(id);
+  const svg = $('egg'), white = $('eggWhite'), yolk = $('yolk'), shade = $('yolkShade'), shine = $('shine'), hint = $('hint');
+
+  // Smooth closed path through points (Catmull-Rom -> cubic Bézier)
+  function closedPath(pts){
+    const n = pts.length; let d = `M${pts[0][0].toFixed(1)},${pts[0][1].toFixed(1)}`;
+    for (let i = 0; i < n; i++){
+      const p0 = pts[(i-1+n)%n], p1 = pts[i], p2 = pts[(i+1)%n], p3 = pts[(i+2)%n];
+      const c1x = p1[0] + (p2[0]-p0[0])/6, c1y = p1[1] + (p2[1]-p0[1])/6;
+      const c2x = p2[0] - (p3[0]-p1[0])/6, c2y = p2[1] - (p3[1]-p1[1])/6;
+      d += `C${c1x.toFixed(1)},${c1y.toFixed(1)} ${c2x.toFixed(1)},${c2y.toFixed(1)} ${p2[0].toFixed(1)},${p2[1].toFixed(1)}`;
+    }
+    return d + 'Z';
+  }
+  function blob(cx, cy, r, n, t, amp, seed, squash){
+    const pts = [];
+    for (let i = 0; i < n; i++){
+      const a = i / n * Math.PI * 2;
+      const w = Math.sin(a*3 + t + seed)*.5 + Math.sin(a*5 - t*1.3 + seed*2)*.3 + Math.sin(a*2 + t*.7 + seed*3)*.2;
+      const rr = r * (1 + amp * w);
+      pts.push([cx + Math.cos(a)*rr*(1+squash), cy + Math.sin(a)*rr*(1-squash)]);
+    }
+    return closedPath(pts);
+  }
+
+  let t = 0, impulse = 0, squash = 0, squashV = 0;
+  let pos = {x:300, y:300}, target = {x:300, y:300};
+
+  function draw(){
+    const wob = .03 + impulse * .14;
+    white.setAttribute('d', blob(300, 300, 228, 12, t*.5, .11 + impulse*.05, 1.7, squash*.35));
+    shade.setAttribute('d', blob(pos.x+6, pos.y+10, 108, 10, t, wob, .4, squash));
+    yolk.setAttribute('d', blob(pos.x, pos.y, 104, 10, t, wob, .4, squash));
+    shine.setAttribute('cx', pos.x - 40 + squash*30);
+    shine.setAttribute('cy', pos.y - 44);
+    shine.setAttribute('transform', `rotate(-28 ${pos.x-40} ${pos.y-44})`);
+  }
+
+  function frame(){
+    t += .016 + impulse * .05;
+    impulse *= .96;
+    // spring for squash
+    squashV += (-squash) * .18; squashV *= .82; squash += squashV;
+    pos.x += (target.x - pos.x) * .08;
+    pos.y += (target.y - pos.y) * .08;
+    draw();
+    requestAnimationFrame(frame);
+  }
+
+  function toSvg(e){
+    const r = svg.getBoundingClientRect();
+    return {x:(e.clientX - r.left) / r.width * 600, y:(e.clientY - r.top) / r.height * 600};
+  }
+  const hero = document.querySelector('.hero');
+  hero.addEventListener('pointermove', e => {
+    const p = toSvg(e);
+    const dx = p.x - 300, dy = p.y - 300, d = Math.hypot(dx, dy) || 1, max = 46;
+    const k = Math.min(1, d / 400) * max / d;
+    target = {x: 300 + dx * k, y: 300 + dy * k};
+  });
+  hero.addEventListener('pointerleave', () => target = {x:300, y:300});
+
+  let pokes = 0;
+  const lines = ['Touchez le jaune', 'Encore ?', 'Il est bien cuit, promis', 'Pareil pour vos projets', 'On en parle ?'];
+  svg.addEventListener('pointerdown', e => {
+    impulse = 1; squashV += .16;
+    pokes++; hint.textContent = lines[Math.min(pokes, lines.length - 1)];
+    if (reduce) draw();
+  });
+
+  draw();
+  if (!reduce) requestAnimationFrame(frame);
+
+  /* ---------- Order ticket ---------- */
+  const form = $('orderForm'), items = $('tItems'), total = $('tTotal'), note = $('tNote'), client = $('tClient');
+  const now = new Date();
+  $('tDate').textContent = now.toLocaleDateString('fr-FR') + ' ' + now.toLocaleTimeString('fr-FR', {hour:'2-digit', minute:'2-digit'});
+  $('tNum').textContent = 'N° ' + String(Math.floor(Math.random()*9000)+1000);
+
+  function render(){
+    const checked = [...form.querySelectorAll('input[name=svc]:checked')].map(i => i.value);
+    items.innerHTML = '';
+    if (!checked.length){ items.innerHTML = '<li class="empty">Choisissez sur la carte</li>'; }
+    checked.forEach(v => { const li = document.createElement('li'); li.innerHTML = '<span>1 x ' + v + '</span><span>sur mesure</span>'; items.appendChild(li); });
+    total.textContent = checked.length + (checked.length > 1 ? ' plats' : ' plat');
+    const n = form.name.value.trim(), c = form.company.value.trim();
+    client.textContent = 'Table : ' + ([n, c].filter(Boolean).join(', ') || 'à compléter');
+    note.textContent = form.msg.value.trim() ? 'Note : ' + form.msg.value.trim() : '';
+  }
+  form.addEventListener('input', render);
+  form.addEventListener('change', render);
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const checked = [...form.querySelectorAll('input[name=svc]:checked')].map(i => i.value);
+    const subject = 'Nouveau projet' + (checked.length ? ' : ' + checked.join(', ') : '');
+    const body = [
+      'Bonjour,', '',
+      checked.length ? 'Je suis intéressé(e) par : ' + checked.join(', ') + '.' : '',
+      '', form.msg.value.trim(), '',
+      form.name.value.trim(), form.company.value.trim()
+    ].join('\n').replace(/\n{3,}/g, '\n\n');
+    location.href = 'mailto:contact@digital-cooking-factory.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>
+</body>
+</html>
